@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "250210685012",
+    "project_id": "realtime-chat-app-5d6cf",
+    "storage_bucket": "realtime-chat-app-5d6cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250210685012:android:ae8173c0a5c369a363ddc1",
+        "android_client_info": {
+          "package_name": "com.example.mobie_ticket_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR-u1HKbuZDL7zge2Pzj9RGqbrbBxIhJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250210685012:android:ee20c0d7b2b4509963ddc1",
+        "android_client_info": {
+          "package_name": "com.realtime.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR-u1HKbuZDL7zge2Pzj9RGqbrbBxIhJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
