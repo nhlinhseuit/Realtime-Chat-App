@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobie_ticket_app/const.dart';
 
 class CustomFormField extends StatelessWidget {
   final String hintText;
@@ -23,6 +24,8 @@ class CustomFormField extends StatelessWidget {
         onSaved: onSaved,
         obscureText: obscureText,
         validator: (value) {
+          if (validdationRegEx.toString() == nameValidationRegex.toString())
+            return null;
           if (value != null && validdationRegEx.hasMatch(value)) {
             return null;
           }

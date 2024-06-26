@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobie_ticket_app/const.dart';
 import 'package:mobie_ticket_app/services/alert_service.dart';
@@ -149,23 +150,28 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _createAnAccountLink() {
-    return const Expanded(
+    return Expanded(
         child: Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(
+        const Text(
           'Don\'t have an account? ',
           style: TextStyle(
             color: Colors.black,
           ),
         ),
-        Text(
-          'Sign up',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w800,
+        GestureDetector(
+          onTap: () {
+            _navigationService.pushNamed('/register');
+          },
+          child: const Text(
+            'Sign up',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w800,
+            ),
           ),
         ),
       ],

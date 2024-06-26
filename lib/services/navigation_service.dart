@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mobie_ticket_app/pages/home_page.dart';
 import 'package:mobie_ticket_app/pages/login_page.dart';
+import 'package:mobie_ticket_app/pages/register_page.dart';
 
 class NavigationService {
   late GlobalKey<NavigatorState> _navigatorKey;
 
   final Map<String, Widget Function(BuildContext)> _routes = {
     "/login": (context) => const LoginPage(),
+    "/register": (context) => const RegisterPage(),
     "/home": (context) => const HomePage(),
   };
 
