@@ -52,6 +52,7 @@ class AuthService {
     return false;
   }
 
+  // những lần đăng nhập sau như kill app thì kh gán user từ login nữa, mà từ đây
   void authStateChangesStreamListener(User? user) {
     if (user != null) {
       _user = user;

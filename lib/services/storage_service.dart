@@ -14,8 +14,8 @@ class StorageService {
     Reference fileRef = _firebaseStorage
         .ref('users/pfps')
         .child('$uid${p.extension(file.path)}');
-    UploadTask TASK = fileRef.putFile(file);
-    return TASK.then((p) {
+    UploadTask task = fileRef.putFile(file);
+    return task.then((p) {
       if (p.state == TaskState.success) {
         return fileRef.getDownloadURL();
       }

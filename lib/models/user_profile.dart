@@ -26,6 +26,7 @@ class UserProfile {
 
   // JSON LÀ 1 MAP Ở DẠNG KHÔNG CÁCH DÒNG, VIẾT LIỀN
   // MAP LÀ MAP
+  // VÀ FIREBASE CHỈ CẦN SỬ DỤNG MAP KHI FROM FIRESTORE VÀ TO FIRESTORE
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobie_ticket_app/pages/chat_page.dart';
 import 'package:mobie_ticket_app/pages/home_page.dart';
 import 'package:mobie_ticket_app/pages/login_page.dart';
 import 'package:mobie_ticket_app/pages/register_page.dart';
@@ -22,6 +23,12 @@ class NavigationService {
 
   NavigationService() {
     _navigatorKey = GlobalKey<NavigatorState>();
+  }
+
+  // Sử dụng pushs thay vì pushNamed vì cần truyền argument
+  // Nếu pushNamed và khai báo ở trên _routes thì sẽ không truyền được argument
+  void push(MaterialPageRoute route) {
+    _navigatorKey.currentState?.push(route);
   }
 
   void pushNamed(String routeName) {
