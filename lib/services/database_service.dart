@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobie_ticket_app/models/chat.dart';
+import 'package:mobie_ticket_app/models/message.dart';
 import 'package:mobie_ticket_app/models/user_profile.dart';
 import 'package:mobie_ticket_app/services/auth_service.dart';
 import 'package:mobie_ticket_app/utils.dart';
@@ -48,7 +49,7 @@ class DatabaseService {
 
   Future<bool> checkChatExists(String uid1, String uid2) async {
     String chatID = generateChatID(uid1: uid1, uid2: uid2);
-    final result = await _chatsCollection?.doc().get();
+    final result = await _chatsCollection?.doc(chatID).get();
     if (result != null) {
       return result.exists;
     }
@@ -64,5 +65,40 @@ class DatabaseService {
       participants: [uid1, uid2],
     );
     await docRef.set(chat);
+  }
+
+  Future<void> sendChatMessage(
+      String uid1, String uid2, Message message) async {
+    String chatID = generateChatID(uid1: uid1, uid2: uid2);
+    final docRef = _chatsCollection!.doc(chatID);
+    await docRef.update({
+      "messages": FieldValue.arrayUnion(
+        [
+          message.toJson(),
+        ],
+      )
+    });
+  }
+
+  Stream<DocumentSnapshot<Chat>> getChatData(
+    String uid1,
+    String uid2,
+  ) {
+    String chatID = generateChatID(uid1: uid1, uid2: uid2);
+
+    final docRef = _chatsCollection!.doc(chatID);
+
+    print(
+        'Document Reference: ${docRef.path}'); // Debug: In ra đường dẫn tài liệu
+    print(docRef.get());
+    get123(chatID);
+    return docRef.snapshots() as Stream<DocumentSnapshot<Chat>>;
+  }
+
+  Future<void> get123(String chatID) async {
+    final docRef = _chatsCollection!.doc(chatID);
+    DocumentSnapshot res = await docRef.get();
+    var chat = res.data() as Chat;
+    print(chat.messages!.length);
   }
 }
